@@ -1,0 +1,21 @@
+/* bootstrap overrides */
+nav.navbar {
+    background-color: #333;
+    border-radius: 0;
+}
+
+nav.navbar .greeting {
+    color: white;
+}
+
+nav .navbar-brand {
+    font-size: 36px;
+}
+
+nav ul.navbar-nav {
+    float: right;
+}
+
+nav ul.navbar-nav li {
+    margin-right: 20px;
+}

@@ -1,0 +1,127 @@
+body {
+    font-family: Segoe UI, verdana;
+    font-size: 12px;
+    background-image:url("assets/clouds.jpg");
+    background-repeat: repeat-y;
+}
+
+simple-notifications {
+    z-index: 9999;
+    margin-top: 200px;
+}
+
+#appcontainer {
+    padding: 10px 20px 20px 20px;
+}
+
+h1 {
+    margin: 10px 0 20px 0 !important;
+    color: #3C8ED2;
+}
+  
+.clear {
+    clear: both;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+}
+  
+#location {
+    display: block;
+    margin: 15px;
+}
+  
+.error {
+    color: red;
+    display: none;
+}
+  
+#weather-forecast {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 25px;
+    padding: 20px;
+    color: #aaa;
+    font-size: 18px;
+    background-color: white;
+}
+  
+#weather-forecast div {
+      margin-bottom: 15px;
+}
+  
+#weather-forecast #description {
+      margin-bottom: 0px;
+}
+  
+.result { color: #05E177; }
+  
+.ex {
+      color: #aaa;
+      font-style: italic;
+}
+  
+.weather-icon {
+    width: 150px;
+    height: 150px;
+    background-image: url("assets/weathericons.jpg");
+    background-repeat: no-repeat;
+}
+
+.weather-icon.clearsky {
+    background-position: -300px -300px;
+}
+
+.weather-icon.snow, .weather-icon.lightrainandsnow {
+    background-position: -300px -150px;
+}
+
+.weather-icon.scatteredclouds, .weather-icon.brok-cloud {
+    background-position: -300px 0px;
+}
+
+.weather-icon.lightrain,
+.weather-icon.moderaterain,
+.weather-icon.lightintensityshowerrain,
+.weather-icon[class*="rain"]
+ {
+    background-position: 0px -150px;
+}
+
+.weather-icon.showerrain {
+    background-position: -150px -150px;
+}
+
+.weather-icon.fog, .weather-icon.haze, .weather-icon.mist  {
+    background-position: -150px -450px;
+}
+
+.weather-icon.overcast clouds, .weather-icon.fewclouds {
+    background-position: -300px -0px;
+}
+.weather-icon.thunderstorm {
+    background-position: -450px -0px;
+}
+.weather-icon.noicon {
+    background-image: none;
+}
+
+/* Global bootstrap overrides */
+.navbar {
+    margin-bottom: 0 !important;
+}
+
+.fixed-top {
+    z-index: 1000;
+}
+
+.page-header {
+    border: 0 !important;
+}
+
+/* notifications style overrides */
+.simple-notification.error {
+    display: block !important;
+}
