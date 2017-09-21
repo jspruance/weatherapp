@@ -1,5 +1,5 @@
 # weatherapp
-A mean stack weather application built with MongoDB, Express, Angular 4 and NodeJS and Open Weather Map REST services.
+A MEAN-stack weather application built with MongoDB, Express, Angular 4 and NodeJS and Open Weather Map REST services.
 
 # installation
 1) Clone repository
@@ -12,3 +12,6 @@ A mean stack weather application built with MongoDB, Express, Angular 4 and Node
 6) Run 'npm install'
 7) Run 'npm start' in root folder ('weatherapp')
 8) View applicatin in browser at 'localhost:3000'
+
+# production
+Production URL: http://www.weatherapp.xyz
