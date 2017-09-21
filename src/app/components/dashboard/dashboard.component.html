@@ -1,0 +1,39 @@
+<simple-notifications [options]="options"></simple-notifications>
+
+<app-subnav></app-subnav>
+
+<div class="pull-left">
+    <h3 class="componenttitle">My saved locations</h3>
+</div>
+
+<div class="pull-left edit-link" *ngIf="reports">
+    <a href="#" class="btn btn-link" (click)="toggleEdit()">[ {{editText}} ]</a>
+    <a href="#" class="btn btn-link" (click)="clearAll()">[ clear all ]</a>
+</div>
+
+<div class="clear" *ngIf=reports>
+
+  <div id="saved-tile" *ngFor="let report of reports">
+
+    <div (click)="deleteTile(report.name)" *ngIf=isEdit class="delete pull-right"><img src="assets/x.png" alt="delete" /></div>
+      
+    <h3 class="result">{{report.name}}</h3>
+    
+    <div id="temperature">Temperature: 
+      <span class="result temp">{{convertTemp(report.main.temp)}}
+      </span>
+    </div>
+          
+    <div id="description">Weather conditions:
+      <span class="result">{{report.weather[0].description}}</span>
+    </div>  
+    
+    <div class="weather-icon {{removeWhitespace(report.weather[0].description)}}"></div>
+        
+  </div>
+
+</div>
+
+<div class="nolocations clear" *ngIf="!reports">
+  <p>You have no saved locations. <a href="/search">Add one now.</a></p>
+</div>
