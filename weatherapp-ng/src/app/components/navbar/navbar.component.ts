@@ -23,13 +23,16 @@ export class NavbarComponent implements OnInit {
   constructor(private notificationsService: NotificationsService,
               private authService: AuthService,
               private router: Router
-             ) { }
+             ) {
+    authService.login$.subscribe(user => this.onUserLogin(user));
+  }
+
+  onUserLogin(user) {
+    // update username in top nav when user logs in
+    this.username = user.username;
+  }
 
   ngOnInit() {
-    if (this.authService.loggedIn()) {
-      let user = JSON.parse(localStorage.getItem('user'));
-      this.username = user.name;
-    }
   }
 
   onLogoutClick() {

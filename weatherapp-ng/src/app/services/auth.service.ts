@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
@@ -7,8 +7,11 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
+  public login$: EventEmitter<any>;
 
-  constructor(private http:Http) { }
+  constructor(private http:Http) { 
+    this.login$ = new EventEmitter();
+  }
 
   registerUser(user){
     let headers = new Headers();
@@ -22,6 +25,7 @@ export class AuthService {
     headers.append('Content-Type','application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user,{headers: headers})
     .map(res => res.json());
+    
   }
 
   getProfile(){
@@ -38,6 +42,7 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+    this.login$.emit(user);
   }
 
   loadToken() {
