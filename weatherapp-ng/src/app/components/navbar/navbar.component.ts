@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
   onLogoutClick() {
     this.authService.logout();
     sessionStorage.setItem("userlogout", "true");
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
     return false;
   }
 
