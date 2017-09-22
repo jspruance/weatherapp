@@ -10,8 +10,9 @@ A MEAN-stack weather application built with MongoDB, Express, Angular 4 and Node
 4) Run 'npm install'
 5) CD into Angular app 'weatherapp/weatherapp-ng'
 6) Run 'npm install'
-7) Run 'npm start' in root folder ('weatherapp')
-8) View applicatin in browser at 'localhost:3000'
+7) Run 'ng build' (prerequisite: Angular CLI tool)
+8) Run 'npm start' in root folder ('weatherapp')
+9) View applicatin in browser at 'localhost:3000'
 
 # production
 Production URL: http://www.weatherapp.xyz
