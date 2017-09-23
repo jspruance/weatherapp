@@ -38,7 +38,7 @@ label {
     display: none;
 }
   
-#weather-forecast {
+#current-weather-tile {
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-top: 25px;
@@ -48,11 +48,11 @@ label {
     background-color: white;
 }
   
-#weather-forecast div {
+#current-weather-tile div {
       margin-bottom: 15px;
 }
   
-#weather-forecast #description {
+#current-weather-tile #description {
       margin-bottom: 0px;
 }
   

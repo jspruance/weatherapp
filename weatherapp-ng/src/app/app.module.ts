@@ -21,6 +21,7 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { SubnavComponent } from './components/subnav/subnav.component';
 import { AuthGuard } from './guards/auth.guard';
+import { WeatherdetailsComponent } from './components/weatherdetails/weatherdetails.component';
 
 
 const appRoutes: Routes = [
@@ -51,8 +52,8 @@ const appRoutes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path: 'search',
-    component: SearchComponent
+    path: 'weather',
+    component: WeatherdetailsComponent
   }
 ];
 
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    SubnavComponent
+    SubnavComponent,
+    WeatherdetailsComponent
   ],
   imports: [
     BrowserModule,
