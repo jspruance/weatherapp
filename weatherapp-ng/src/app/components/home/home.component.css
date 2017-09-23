@@ -1,4 +1,24 @@
 .jumbotron {
     opacity: .8;
     border-radius: 8px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+}
+
+.jumbotron .h1, .jumbotron h1 {
+    font-size: 63px !important;
+    color: inherit !important;
+}
+
+.jumbotron p {
+    font-size: 21px;
+    font-weight: 200;
+}
+
+p.tagline {
+    margin-bottom: 25px;
+}
+
+div.main-cta {
+    padding: 5px;
 }

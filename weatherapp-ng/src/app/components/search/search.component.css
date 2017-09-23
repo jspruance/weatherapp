@@ -3,18 +3,29 @@ h3 {
     color: #555;
 }
 
-form#searchform {
-    margin-top: 21px;
-    margin-bottom: 20px;
+form#searchform input {
+    width: 400px;
+    padding-left: 70px;
+    background-image: url('/assets/mg.png');
+    background-repeat: no-repeat;
+    background-position: left 10px top 50%;
+}
+
+.form-control-lg, .input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn {
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: .3rem;
 }
 
 form#searchform button {
-    margin-top: 20px;
+    line-height: 1.8em;
+    margin-left: 15px;
+    cursor: pointer;
 }
 
-.input-jumbo {
-    padding: .5rem 1rem !important;
-    font-size: 1.25rem !important;
-    line-height: 1.5 !important;
-    border-radius: .3rem !important;
+#search {
+    margin:0 auto;
+    width: 50%;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }

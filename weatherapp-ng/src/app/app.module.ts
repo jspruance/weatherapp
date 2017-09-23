@@ -54,6 +54,10 @@ const appRoutes: Routes = [
   {
     path: 'weather',
     component: WeatherdetailsComponent
+  },
+  {
+    path: 'weather/:location',
+    component: WeatherdetailsComponent
   }
 ];
 

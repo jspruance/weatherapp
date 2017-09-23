@@ -1,6 +1,9 @@
 body {
-    font-family: Segoe UI, verdana;
-    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.43;
     background-image:url("assets/clouds.jpg");
     background-repeat: repeat-y;
 }
@@ -15,10 +18,14 @@ simple-notifications {
 }
 
 h1 {
-    margin: 10px 0 20px 0 !important;
+    margin: 10px 0 7px 0 !important;
     color: #3C8ED2;
 }
-  
+
+h3 {
+    font-size: 24px !important;
+}
+
 .clear {
     clear: both;
 }
@@ -119,6 +126,9 @@ label {
 
 .page-header {
     border: 0 !important;
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
 }
 
 /* notifications style overrides */

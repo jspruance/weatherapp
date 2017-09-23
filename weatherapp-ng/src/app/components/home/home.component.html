@@ -1,14 +1,21 @@
 <simple-notifications [options]="options"></simple-notifications>
 
 <div class="jumbotron text-center">
+
   <h1>Weather App</h1>
-  <p class="lead">Accurate weather reporting from around the globe</p>
-  <div *ngIf="!authService.loggedIn()">
-    <a class="btn btn-primary" [routerLink]="['/register']">Register</a> <a class="btn btn-default" [routerLink]="['/login']">Login</a>
+  <p class="lead tagline">Accurate weather reporting from around the globe</p>
+
+  <app-search></app-search>
+  
+  <div class="main-cta">
+    <div *ngIf="!authService.loggedIn()">
+      <a class="btn btn-primary" [routerLink]="['/register']">Register</a> <a class="btn btn-light" [routerLink]="['/login']">Login</a>
+    </div>
+    <div *ngIf="authService.loggedIn()">
+      <a class="btn btn-primary" [routerLink]="['/dashboard']">Dashboard</a> <a class="btn btn-light" [routerLink]="['/search']">Search weather</a>
+    </div>
   </div>
-  <div *ngIf="authService.loggedIn()">
-    <a class="btn btn-primary" [routerLink]="['/dashboard']">Dashboard</a> <a class="btn btn-default" [routerLink]="['/search']">Search weather</a>
-  </div>
+
 </div>
   
 <div class="row">

@@ -1,0 +1,24 @@
+<simple-notifications [options]="options"></simple-notifications>
+
+<app-search (changeWeather)="updateWeather($event)"></app-search>
+
+<div id="current-weather-tile" *ngIf=report>
+
+  <div>
+    <a class="btn btn-success addtosaved" href="#" (click)="addToSavedLocations(report.name)">Add to saved locations</a>
+  </div>
+  
+  <h3 class="result">{{report.name}}</h3>
+      
+  <div id="temperature">Temperature: 
+    <span class="result">{{convertTemp(report.main.temp)}}
+    </span>
+  </div>
+      
+  <div id="description">Weather conditions:
+    <span class="result">{{report.weather[0].description}}</span>
+  </div>  
+
+  <div class="weather-icon {{removeWhitespace(report.weather[0].description)}}"></div>
+    
+</div>
