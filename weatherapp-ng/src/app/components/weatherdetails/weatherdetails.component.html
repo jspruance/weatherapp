@@ -2,20 +2,20 @@
 
 <app-search (changeWeather)="updateWeather($event)"></app-search>
 
-<div id="current-weather-tile" *ngIf=report>
+<div class="current-weather-tile" *ngIf=report>
 
-  <div>
-    <a class="btn btn-success addtosaved" href="#" (click)="addToSavedLocations(report.name)">Add to saved locations</a>
+  <div class="addtosaved">
+    <a class="btn btn-success" href="#" (click)="addToSavedLocations(report.name)">Add to dashboard</a>
   </div>
   
   <h3 class="result">{{report.name}}</h3>
       
   <div id="temperature">Temperature: 
-    <span class="result">{{convertTemp(report.main.temp)}}
+    <span class="result temp">{{convertTemp(report.main.temp)}}
     </span>
   </div>
       
-  <div id="description">Weather conditions:
+  <div id="description">Current conditions:
     <span class="result">{{report.weather[0].description}}</span>
   </div>  
 

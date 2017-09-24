@@ -45,24 +45,6 @@ label {
     display: none;
 }
   
-#current-weather-tile {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-top: 25px;
-    padding: 20px;
-    color: #aaa;
-    font-size: 18px;
-    background-color: white;
-}
-  
-#current-weather-tile div {
-      margin-bottom: 15px;
-}
-  
-#current-weather-tile #description {
-      margin-bottom: 0px;
-}
-  
 .result { color: #05E177; }
   
 .ex {
