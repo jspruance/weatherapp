@@ -15,7 +15,7 @@
 
   <div id="saved-tile" (click)="getDetails(tilelocation.value)" *ngFor="let report of reports">
 
-    <div (click)="deleteTile(report.name);$event.stopPropagation();" *ngIf=isEdit class="delete pull-right">
+    <div (click)="deleteTile(report.name); $event.stopPropagation();" *ngIf=isEdit class="delete pull-right">
       <img src="assets/x.png" alt="delete" />
     </div>
       
