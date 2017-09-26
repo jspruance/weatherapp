@@ -73,10 +73,6 @@ export class WeatherdetailsComponent implements OnInit {
       }
       
     });
-
-    console.log(fiveDayArray);
-
-
     
     fiveDayArray.forEach(function(forecastgroup){
 
