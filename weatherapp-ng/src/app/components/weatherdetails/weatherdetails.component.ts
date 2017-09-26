@@ -55,7 +55,6 @@ export class WeatherdetailsComponent implements OnInit {
       let day = d.getDay();
       let hour = d.getHours();
       
-      
       // filter out any forecasts for today and order the rest by day
       if (day != dtoday) {
         // convert dt to day value
@@ -69,20 +68,35 @@ export class WeatherdetailsComponent implements OnInit {
     
     fiveDayArray.forEach(function(forecastgroup){
 
-      let thisForecast = { "day":"", "hi":"", "lo":"","description":""};
+      let thisForecast = { "day":"", "hi":0, "lo":0,"description":""};
       
-      let hitemp;
-      let lotemp;
+      let hitemp = -999;
+      let lotemp = 999;
 
       if(forecastgroup.length > 0) {
         // inner loop - iterate forecasts for a particular day
         forecastgroup.forEach(function(forecast) {
+
+          // get description for midday forecast
           if(forecast.hourMil > 10 && forecast.hourMil < 14) {
             thisForecast.description = forecast.weather[0].description;
             thisForecast.day = forecast.day;
-            thisForecast.hi = forecast.main.temp_max;
           }
+
+          // set day's hi temp
+          if (forecast.main.temp_max > hitemp) {
+            hitemp = forecast.main.temp_max;
+          }
+
+          // set day's lo temp
+          if (forecast.main.temp_min < lotemp) {
+            lotemp = forecast.main.temp_min;
+          }
+
         });
+
+        thisForecast.hi = hitemp;
+        thisForecast.lo = lotemp;
 
         // push the final 'combned' forecast for each day to the results array
         resultArray.push(thisForecast);
@@ -94,7 +108,6 @@ export class WeatherdetailsComponent implements OnInit {
     // set the results in the class property for binding
     data.list = resultArray;
     this.forecastReport = data;
-   console.log(this.forecastReport);
   };
 
   addToSavedLocations(location) {
@@ -117,11 +130,13 @@ export class WeatherdetailsComponent implements OnInit {
     return false;
   }
 
-  convertTemp(temp, scale) {
+  convertTemp(temp, scale, nosign) {
     if (scale == "C") {
-      Math.ceil(temp - 273.15) + String.fromCharCode(176) + "C";
+      let S = (nosign) ? "" : "C";
+      Math.ceil(temp - 273.15) + String.fromCharCode(176) + S;
     }else {
-      return Math.ceil((9/5*(temp  - 273))+32) + String.fromCharCode(176) + "F";
+      let S = (nosign) ? "" : "F";
+      return Math.ceil((9/5*(temp  - 273))+32) + String.fromCharCode(176) + S;
     }
     
   }

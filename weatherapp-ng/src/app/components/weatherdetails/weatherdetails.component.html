@@ -40,7 +40,7 @@
 <div id="extended-forecast" *ngIf=forecastReport>
   <div class="forecast" *ngFor="let forecast of forecastReport.list">
     <h5>{{forecast.day}}</h5>
-    <div class="temp-hi result">{{convertTemp(forecast.hi, "F")}}</div>
+    <div class="temp-hi result">{{convertTemp(forecast.hi, "F", true)}} <span class="grey"> / </span><span class="lotempcolor">{{convertTemp(forecast.lo, "F", true)}}</span></div>
     <div class="weather-icon {{removeWhitespace(forecast.description)}}"></div>
     <p class="forecast-description">{{forecast.description}}</p>
   </div>
