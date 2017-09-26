@@ -37,6 +37,11 @@ h3 {
     font-size: 16px;
     height: 312px;
     background-color: white;
+    cursor: pointer;
+}
+
+#saved-tile:hover {
+  background-color: #FFFFD4;
 }
   
 #saved-tile div {

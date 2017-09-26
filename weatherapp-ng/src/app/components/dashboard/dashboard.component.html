@@ -13,13 +13,13 @@
 
 <div class="clear" *ngIf=reports>
 
-  <div id="saved-tile" *ngFor="let report of reports">
+  <div id="saved-tile" (click)="getDetails(tilelocation.value)" *ngFor="let report of reports">
 
     <div (click)="deleteTile(report.name)" *ngIf=isEdit class="delete pull-right"><img src="assets/x.png" alt="delete" /></div>
       
     <h3 class="result">{{report.name}}</h3>
     
-    <div id="temperature">Temperature: 
+    <div id="temperature">Current temp: 
       <span class="result temp">{{convertTemp(report.main.temp)}}
       </span>
     </div>
@@ -29,6 +29,8 @@
     </div>  
     
     <div class="weather-icon {{removeWhitespace(report.weather[0].description)}}"></div>
+
+    <input type="hidden" value="{{report.name}}" #tilelocation />
         
   </div>
 

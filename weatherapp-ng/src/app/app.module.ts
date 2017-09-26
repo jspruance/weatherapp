@@ -14,12 +14,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SubnavComponent } from './components/subnav/subnav.component';
 
 import { WeatherService } from './services/weather.service';
 import { SavedlocationsService } from './services/savedlocations.service';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { SubnavComponent } from './components/subnav/subnav.component';
+import { DateService } from './services/date.service';
 import { AuthGuard } from './guards/auth.guard';
 import { WeatherdetailsComponent } from './components/weatherdetails/weatherdetails.component';
 
@@ -82,7 +83,7 @@ const appRoutes: Routes = [
     SimpleNotificationsModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [WeatherService,SavedlocationsService,ValidateService,AuthService,AuthGuard],
+  providers: [WeatherService,SavedlocationsService,ValidateService,AuthService,AuthGuard,DateService],
   bootstrap: [AppComponent]
 })
 

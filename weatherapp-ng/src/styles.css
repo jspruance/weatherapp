@@ -30,6 +30,14 @@ h3 {
     clear: both;
 }
 
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
 label {
     display: block;
     font-size: 14px;
@@ -55,7 +63,7 @@ label {
 .weather-icon {
     width: 150px;
     height: 150px;
-    background-image: url("assets/weathericons.jpg");
+    background-image: url("assets/weathericons.png");
     background-repeat: no-repeat;
 }
 

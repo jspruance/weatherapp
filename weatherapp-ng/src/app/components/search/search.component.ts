@@ -16,6 +16,9 @@ export class SearchComponent implements OnInit {
   @Output()
   changeWeather: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output()
+  changeForecast: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private weatherService:WeatherService,
               private router: Router,
               private route: ActivatedRoute
@@ -26,7 +29,7 @@ export class SearchComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.location = params['location'];
       if (this.location) {
-        this.getWeather(this.location);
+        this.getWeather(this.location, true);
       }
     });
   }
@@ -35,19 +38,29 @@ export class SearchComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  getWeather(locationinput) {
+  getWeather(locationinput, forecast) {
     this.location = locationinput;
     
     // if search is run from the weather page
-    if(window.location.href.indexOf("weather") > -1) {
+    if(window.location.href.indexOf("/weather") > -1) {
+
+      // get current weather
       this.weatherService.getWeather(this.location).subscribe((data) => {
         this.changeWeather.emit(data);
       });
+
+      if(forecast === true) {
+        // get extended forecast
+        this.weatherService.getForecast(this.location).subscribe((data) => {
+          this.changeForecast.emit(data);
+        });
+      }
+
     // if search is run from another page
     } else {
       this.router.navigate(['/weather', this.location]);
     }
-    
+
     return false;
   }
 
