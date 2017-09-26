@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { SavedlocationsService } from '../../services/savedlocations.service';
 import { NotificationsService } from 'angular2-notifications';
+import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -15,6 +16,10 @@ export class DashboardComponent implements OnInit {
   reports: Report[];
   isEdit: boolean = false;
   editText: string = "edit";
+  private sub: any;
+  
+  @Output()
+  changeWeather: EventEmitter<any> = new EventEmitter<any>();
 
   // notification defaults
   public options = {
@@ -26,7 +31,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private weatherService:WeatherService, 
               private savedLocationsService:SavedlocationsService,
-              private notificationsService: NotificationsService
+              private notificationsService: NotificationsService,
+              private router: Router
             ) { }
 
   ngOnInit() {
@@ -54,6 +60,10 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (data) => this.reports = data
     );
+  }
+
+  getDetails(location) {
+    this.router.navigate(['/weather', location]);
   }
 
   toggleEdit() {

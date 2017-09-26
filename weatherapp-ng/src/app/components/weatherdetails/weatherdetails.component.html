@@ -1,0 +1,47 @@
+<simple-notifications [options]="options"></simple-notifications>
+
+<app-search (changeWeather)="updateWeather($event)" (changeForecast)="updateForecast($event)"></app-search>
+
+<div class="current-weather-tile" *ngIf=report>
+
+  <div class="tile-title">
+    <h3 class="result">{{report.name}}</h3>
+    <div class="addtosaved">
+      <a class="btn btn-success" href="#" (click)="addToSavedLocations(report.name)">Add to dashboard</a>
+    </div>
+  </div>
+
+  <div id="tile-main">
+    <div class="tile-left">
+      
+      <div id="date">{{ date }}</div>
+      <div id="description">Current conditions:
+        <span class="result">{{report.weather[0].description}}</span>
+      </div>  
+      
+      <div class="weather-icon {{removeWhitespace(report.weather[0].description)}}"></div>
+    </div>
+
+    <div class="tile-right">
+      <div id="temp-main">
+          <span class="result temp">{{convertTemp(report.main.temp, "F")}}</span>
+          <span id="hi-lo-temp" class="result temp"><span class="grey">High:</span> {{convertTemp(report.main.temp_max, "F")}} <span class="grey">Low:</span> {{convertTemp(report.main.temp_min, "F")}}</span>
+      </div>
+      <div id="addlinfo">
+        <span class="result">
+          <span class="grey">Wind:</span> {{report.wind.speed}} mph 
+          <span class="grey"> Humidity:</span> {{report.main.humidity}}%</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="extended-forecast" *ngIf=forecastReport>
+  <div class="forecast" *ngFor="let forecast of forecastReport.list">
+    <h5>{{forecast.day}}</h5>
+    <div class="temp-hi result">{{convertTemp(forecast.hi, "F", true)}} <span class="grey"> / </span><span class="lotempcolor">{{convertTemp(forecast.lo, "F", true)}}</span></div>
+    <div class="weather-icon {{removeWhitespace(forecast.description)}}"></div>
+    <p class="forecast-description">{{forecast.description}}</p>
+  </div>
+</div>

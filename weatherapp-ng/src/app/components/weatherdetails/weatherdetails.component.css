@@ -1,0 +1,186 @@
+.current-weather-tile {
+    width: 50%;
+    float: left;
+    /* border: 1px solid #ddd; */
+    border-radius: 8px;
+    margin: 15px 20px 20px 10px;
+    padding: 18px;
+    font-size: 16px;
+    height: 312px;
+    background-color: white;
+}
+
+#extended-forecast {
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+.forecast {
+    width: 18%;
+    float: left;
+    border-radius: 8px;
+    margin: 20px 10px;
+    padding: 18px;
+    font-size: 16px;
+    height: 312px;
+    background-color: white;    
+}
+
+.current-weather-tile .tile-title {
+    width: 100%;
+    float: left;
+}
+
+
+.current-weather-tile #tile-main {
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+.current-weather-tile .tile-left {
+    width: 50%;
+    float: left;
+}
+
+.current-weather-tile .tile-left .weather-icon {
+    margin: auto;
+}
+
+.current-weather-tile .tile-right {
+    width: 50%;
+    float: left;
+}
+
+.current-weather-tile .tile-title h3 {
+    float: left;
+    font-size: 36px !important;
+}
+  
+.current-weather-tile #description {
+      margin-bottom: 0px;
+}
+
+.current-weather-tile #temp-main {
+    margin: 30px auto 10px auto;
+    width: 70%;
+    text-align: center;
+}
+
+.current-weather-tile #temp-main .result.temp {
+    padding: 20px 20px 0px 20px;
+    font-size: 66px;
+}
+
+.current-weather-tile #hi-lo-temp {
+    clear: both;
+    padding-bottom: 30px;
+}
+
+.current-weather-tile #addlinfo {
+    margin: auto;
+    text-align: center;
+}
+
+.current-weather-tile #temp-main #hi-lo-temp.result.temp {
+    font-size: 14px;
+    padding-top: 0;
+    margin-top: 0;
+    position: relative;
+    top: -12px;
+}
+
+.current-weather-tile #description, 
+.componenttitle,
+.grey {
+    color: #555;
+}
+
+.current-weather-tile div.addtosaved {
+    float: right;
+    margin-bottom: 0px !important;
+}
+
+.current-weather-tile div#date, 
+.current-weather-tile #description,
+.current-weather-tile #temp-main {
+    margin-bottom: 5px;
+}
+
+.forecast {
+  text-align: center;
+}
+
+.forecast h5 {
+    color: #555;
+}
+
+.forecast .lotempcolor {
+    color: #5FCBE7;
+}
+
+.forecast .grey {
+    color: #ccc;
+}
+
+.forecast .temp-hi {
+    font-size: 42px;
+    margin-top: 10px auto;
+    padding-top: 10px;
+}
+
+.forecast .forecast-description {
+    color: #05E177;
+}
+
+/* 5 day forecast icons */
+
+.forecast .weather-icon {
+    width: 120px;
+    height: 120px;
+    background-image: url("../../../assets/forecasticons.png");
+    background-repeat: no-repeat;
+    margin: 0px auto 10px auto;
+    position: relative;
+    top: -10px;
+    left: -10px;
+}
+
+.forecast .weather-icon.clearsky {
+    background-position: -240px -240px;
+}
+
+.forecast .weather-icon.snow, .forecast .weather-icon.lightrainandsnow {
+    background-position: -240px -120px;
+}
+
+.forecast .weather-icon.scatteredclouds, .forecast .weather-icon.brok-cloud {
+    background-position: -240px 0px;
+}
+
+.forecast .weather-icon.lightrain,
+.forecast .weather-icon.moderaterain,
+.forecast .weather-icon.lightintensityshowerrain,
+.forecast .weather-icon[class*="rain"]
+ {
+    background-position: 0px -120px;
+}
+
+.forecast .weather-icon.showerrain {
+    background-position: -120px -120px;
+}
+
+.forecast .weather-icon.fog, .forecast .weather-icon.haze, .forecast .weather-icon.mist  {
+    background-position: -120px -360px;
+}
+
+.forecast .weather-icon.overcast clouds, .forecast .weather-icon.fewclouds {
+    background-position: -240px -0px;
+}
+.forecast .weather-icon.thunderstorm {
+    background-position: -360px -0px;
+}
+.forecast .weather-icon.noicon {
+    background-image: none;
+}

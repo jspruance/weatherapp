@@ -1,39 +1,15 @@
-<simple-notifications [options]="options"></simple-notifications>
+<div id="search">
 
-<app-subnav></app-subnav>
-
-<form id="searchform" (submit)="getWeather(locationinput.value)">
-    
-  <div class="form-group">
-    <h2 class="page-header">Enter search location</h2>
-    <input type="text" class="form-control form-control-lg input-jumbo" placeholder="ex: seattle, moscow, 32082" #locationinput>
-  </div>
-  <div class="error bg-warning"></div>
-  <button class="btn btn-primary">Get current weather</button>
-
-</form>
-
-<div id="weather-forecast" *ngIf=report>
-
-  <div>
-    <a class="btn btn-success addtosaved" href="#" (click)="addToSavedLocations(report.name)">Add to saved locations</a>
-  </div>
-  
-  <div id="city">City: 
-    <span class="result">{{report.name}}</span>
-  </div>
+  <form class="form-inline" id="searchform" (submit)="getWeather(locationinput.value, true)">
       
-  <div id="temperature">Temperature: 
-    <span class="result">{{convertTemp(report.main.temp)}}
-    </span>
-  </div>
-      
-  <div id="description">Weather conditions:
-    <span class="result">{{report.weather[0].description}}</span>
-  </div>  
+    <div class="form-group">
+      <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Enter search location (city or zip)" #locationinput>
+    </div>
+    <div class="error bg-warning"></div>
+    <button class="btn btn-primary btn-lg">Get weather</button>
 
-  <div class="weather-icon {{removeWhitespace(report.weather[0].description)}}"></div>
-    
+  </form>
+
 </div>
   
 

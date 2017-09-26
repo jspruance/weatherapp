@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
-import { SavedlocationsService } from '../../services/savedlocations.service';
-import { NotificationsService } from 'angular2-notifications';
+import {Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,65 +11,57 @@ import { NotificationsService } from 'angular2-notifications';
 export class SearchComponent implements OnInit {
 
   location:string;
-  report:Report;
-  // notification defaults
-  public options = {
-    position: ["top", "right"],
-    timeOut: 2000,
-    lastOnBottom: true
-  }
+  private sub: any;
+
+  @Output()
+  changeWeather: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output()
+  changeForecast: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private weatherService:WeatherService,
-              private savedLocationsService:SavedlocationsService,
-              private notificationsService: NotificationsService
-            ) { }
+              private router: Router,
+              private route: ActivatedRoute
+             ) { }
 
   ngOnInit() {
+    // if the current url containes a location parameter, run the search using it
+    this.sub = this.route.params.subscribe(params => {
+      this.location = params['location'];
+      if (this.location) {
+        this.getWeather(this.location, true);
+      }
+    });
   }
 
-  getWeather(locationinput) {
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  getWeather(locationinput, forecast) {
     this.location = locationinput;
     
-    this.weatherService.getWeather(this.location).subscribe((data) => {
-      this.report = data;
-    });
+    // if search is run from the weather page
+    if(window.location.href.indexOf("/weather") > -1) {
 
-    return false;
-  }
-
-  addToSavedLocations(location) {
-    if (localStorage.user) {
-      let user = JSON.parse(localStorage.user);
-      this.savedLocationsService.addSavedLocation(location, user.id).subscribe((data) => {
-        // set the new locations into session storage
-        let updatedlocations = data.model.locations;
-        let updateduser = JSON.parse(localStorage.user);
-        updateduser.locations = updatedlocations;
-        localStorage.setItem("user", JSON.stringify(updateduser));
-        // alert user of success
-        this.notificationsService.success("Success", "Location saved to dashboard", this.options);
+      // get current weather
+      this.weatherService.getWeather(this.location).subscribe((data) => {
+        this.changeWeather.emit(data);
       });
-      
-    }else {
-      // alert user of error
-      this.notificationsService.error("Error", "Please log in or register in order to save a location.", this.options);
+
+      if(forecast === true) {
+        // get extended forecast
+        this.weatherService.getForecast(this.location).subscribe((data) => {
+          this.changeForecast.emit(data);
+        });
+      }
+
+    // if search is run from another page
+    } else {
+      this.router.navigate(['/weather', this.location]);
     }
+
     return false;
   }
 
-  convertTemp(temp) {
-    return Math.ceil((9/5*(temp  - 273))+32) + String.fromCharCode(176) + "F" + " / " + Math.ceil(temp - 273.15) + String.fromCharCode(176) + "C";
-  }
-
-  removeWhitespace(str) {
-    return str.replace(" ", "");
-  }
-
-
-}
-
-interface Report{
-  name:string,
-  temp:number,
-  conditions:string
 }
