@@ -49,6 +49,9 @@ export class WeatherdetailsComponent implements OnInit {
 
     let resultArray = [];
 
+    let putIndex = 0;
+    let lastDay = dtoday + 1;
+
     // populte fiveDayArray with reports by day for further processing
     data.list.forEach(function(forecast){
       let d = new Date(forecast.dt * 1000);
@@ -61,10 +64,19 @@ export class WeatherdetailsComponent implements OnInit {
         forecast.day = weekArry[day];
         forecast.hour = hourArry[hour];
         forecast.hourMil = hour;
-        fiveDayArray[day].push(forecast);
+        // add forecasts to the fiveDayArray in the right order
+        if ((day > lastDay) || ((lastDay===6)&&(day===0))) {
+          lastDay = day;
+          putIndex++;
+        }
+        fiveDayArray[putIndex].push(forecast);
       }
       
     });
+
+    console.log(fiveDayArray);
+
+
     
     fiveDayArray.forEach(function(forecastgroup){
 
