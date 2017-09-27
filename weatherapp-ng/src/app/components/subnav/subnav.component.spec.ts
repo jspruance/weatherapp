@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubnavComponent } from './subnav.component';
+import { AuthService } from '../../services/auth.service';
+import { HttpModule } from '@angular/http';
 
 describe('SubnavComponent', () => {
   let component: SubnavComponent;
@@ -8,7 +10,11 @@ describe('SubnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubnavComponent ]
+      declarations: [ SubnavComponent ],
+      providers:[AuthService],
+      imports: [
+        HttpModule
+      ]
     })
     .compileComponents();
   }));
