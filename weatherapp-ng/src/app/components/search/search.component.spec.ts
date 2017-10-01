@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async, fakeAsync, tick, inject } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
