@@ -11,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   location:string;
+  weatherRetrieved: Boolean = false;
   private sub: any;
+  onWeatherPg: Boolean = false;
 
   @Output()
   changeWeather: EventEmitter<any> = new EventEmitter<any>();
@@ -25,11 +27,13 @@ export class SearchComponent implements OnInit {
              ) { }
 
   ngOnInit() {
+    this.onWeatherPg = window.location.href.indexOf("/weather") > -1;
+
     // if the current url containes a location parameter, run the search using it
     this.sub = this.route.params.subscribe(params => {
       this.location = params['location'];
       if (this.location) {
-        this.getWeather(this.location, true);
+        this.getWeather(this.location, true, this.onWeatherPg);
       }
     });
   }
@@ -38,14 +42,15 @@ export class SearchComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  getWeather(locationinput, forecast) {
+  getWeather(locationinput, forecast, onWeatherPg) {
     this.location = locationinput;
     
     // if search is run from the weather page
-    if(window.location.href.indexOf("/weather") > -1) {
+    if(onWeatherPg) {
 
       // get current weather
       this.weatherService.getWeather(this.location).subscribe((data) => {
+        this.weatherRetrieved = true; // for testing
         this.changeWeather.emit(data);
       });
 
