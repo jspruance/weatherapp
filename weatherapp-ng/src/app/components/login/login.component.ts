@@ -10,8 +10,11 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  title: string = "Login";
+
   username: String;
   password: String;
+  loggedIn: string;
 
   // notification defaults
   public options = {
@@ -47,7 +50,8 @@ export class LoginComponent implements OnInit {
     this.authService.authenticateUser(user).subscribe(data => {
       if(data.success){
         this.authService.storeUserData(data.token, data.user);
-        sessionStorage.setItem('userloggedin', 'true');
+        this.loggedIn = 'true';
+        sessionStorage.setItem('userloggedin', this.loggedIn);
         this.router.navigate(['/dashboard']);
       }else {
         this.notificationsService.error("Error", data.msg, this.options);
