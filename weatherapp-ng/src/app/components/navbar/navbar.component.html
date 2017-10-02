@@ -11,11 +11,11 @@
             <a class="nav-link" [routerLink]="['/profile']">Hi {{username}}</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link" [routerLink]="['']">Home</a>
+          <a class="nav-link home-link" [routerLink]="['']">Home</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['/weather']">Weather</a>
-          </li>
+            <a class="nav-link weather-link" [routerLink]="['/weather']">Weather</a>
+        </li>
         <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
             <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
         </li>
