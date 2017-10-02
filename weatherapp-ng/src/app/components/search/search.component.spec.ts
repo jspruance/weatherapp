@@ -1,12 +1,20 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick, inject } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, async, fakeAsync, tick, inject } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { SearchComponent } from './search.component';
 import { WeatherService } from '../../services/weather.service';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpModule } from '@angular/http';
 import {Router} from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Location, CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
+
+@Component({
+  template: ''
+})
+class DummyComponent {
+}
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -42,10 +50,12 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ],
+      declarations: [ SearchComponent, DummyComponent ],
       imports:[
         HttpModule,
-        RouterTestingModule
+        RouterTestingModule.withRoutes([
+          { path: 'weather/Redmond', component: DummyComponent }
+        ]),
       ],
       providers:[WeatherService]
     })
@@ -75,7 +85,7 @@ describe('SearchComponent', () => {
 
   // test 'getWeather' from '/weather' page - async' example
   it('set variable after getWeather promise (async)', async(() => {
-    component.getWeather("abc", false, true);
+    component.getWeather("Redmond", false, true);
 
     fixture.detectChanges();
 
@@ -88,14 +98,25 @@ describe('SearchComponent', () => {
   
   // test 'getWeather' from '/weather' page - 'fakeAsync' example
   it('set variable after getWeather promise (fakeAsync)', fakeAsync(() => {
-    component.getWeather("abc", false, true);
+    component.getWeather("Redmond", false, true);
     fixture.detectChanges();
 
     tick(3000);
     expect(component.weatherRetrieved).toBe(true);
   }));
 
-  
+  it('search from home page should redirect to weather page',
+    async(inject([Router, Location], (router: Router, location: Location) => {
+    component.getWeather("Redmond", false, false);
+
+    fixture.detectChanges();
+      
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/weather/Redmond');
+      console.log('after expect');
+    });
+  })));
   
 
 });
