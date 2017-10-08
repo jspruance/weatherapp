@@ -6,12 +6,16 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 
+// set database
+let db = config.database;
+db = (process.env.NODE_ENV === 'test') ? config.testdatabase : config.database;
+
 // connect to database
-mongoose.connect(config.database);
+mongoose.connect(db);
 
 // on connection
 mongoose.connection.on('connected', () => {
-  console.log('connected to database ' + config.database);
+  console.log('connected to database ' + db);
 });
 
 // on error

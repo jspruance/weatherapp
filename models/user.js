@@ -45,6 +45,16 @@ module.exports.addUser = function (newUser, callback) {
   });
 };
 
+/*
+ * DELETE all users from collection
+ */
+module.exports.deleteUsers = function (callback) {
+  User.remove({}, function(err) { 
+    callback();
+  });
+}
+
+
 module.exports.addLocation = function (userid, newlocation, callback) {
   User.findByIdAndUpdate(
     userid,
