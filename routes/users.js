@@ -112,4 +112,10 @@ router.post('/removealllocations', (req, res, next) => {
 
 });
 
+router.get('/remove', (req, res, next) => {
+  User.deleteUsers(() => {
+    console.log('users removed');
+  });
+});
+
 module.exports = router;
